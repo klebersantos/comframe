@@ -79,8 +79,24 @@
     display: none;
 }
 
+.carousel .swiper-container .swiper-pagination {
+    display: none;
+}
+
+.carousel .swiper-pagination-bullet {
+    margin: 0 10px;
+}
+
 @media (max-width: 992px) {
     .carousel .swiper-pagination {
         display: block;
+        bottom: 17px;
+        left: 0;
+        right: 0;
+    }
+
+    .carousel .swiper-button-prev,
+    .carousel .swiper-button-next {
+        display: none;
     }
 }

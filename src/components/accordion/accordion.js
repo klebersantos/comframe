@@ -3,27 +3,26 @@ import "./accordion.css";
 
 import foto from "../../images/banner.png";
 
-window.onload = () => {
-  const accordionList = document.getElementsByTagName("dt");
-  const accordionListDd = document.querySelectorAll(".item-accordion");
-  var i;
-
-  for (i = 0; i < accordionList.length; i++) {
-    accordionList[i].addEventListener("click", activeAccordion);
-  }
-
-  function activeAccordion() {
-    var itemClass = this.parentNode.className;
-    for (i = 0; i < accordionListDd.length; i++) {
-      accordionListDd[i].className = "item-accordion close";
-    }
-    if (itemClass == "item-accordion close") {
-      this.parentNode.className = "item-accordion open";
-    }
-  }
-};
-
 function Accordion() {
+  window.onload = () => {
+    const accordionList = document.getElementsByTagName("dt");
+    const accordionListDd = document.querySelectorAll(".item-accordion");
+    var i;
+
+    for (i = 0; i < accordionList.length; i++) {
+      accordionList[i].addEventListener("click", activeAccordion);
+    }
+
+    function activeAccordion(i) {
+      var itemClass = this.parentNode.className;
+      for (i = 0; i < accordionListDd.length; i++) {
+        accordionListDd[i].className = "item-accordion close";
+      }
+      if (itemClass == "item-accordion close") {
+        this.parentNode.className = "item-accordion open";
+      }
+    }
+  };
   return (
     <div>
       <section className="quarta-sessao">

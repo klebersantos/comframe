@@ -6,20 +6,23 @@ import "./carousel.css";
 
 import img1 from "../../images/banner.png";
 
-window.onload = () => {
-  const setaEsquerda = document.querySelector(".swiper-button-prev");
-  const setaDireita = document.querySelector(".swiper-button-next");
-  const centro = document.querySelector(".centro");
-  centro.appendChild(setaEsquerda);
-  centro.appendChild(setaDireita);
-};
-
 SwiperCore.use([Navigation, Pagination]);
 
 function Carousel() {
+  setTimeout(function () {
+    const setaEsquerda = document.querySelector(".swiper-button-prev");
+    const setaDireita = document.querySelector(".swiper-button-next");
+    const paginaFora = document.querySelector(".carousel .swiper-pagination");
+    const centro = document.querySelector(".passadores");
+    centro.appendChild(setaEsquerda);
+    centro.appendChild(setaDireita);
+    centro.appendChild(paginaFora);
+  }, 100);
+
   return (
     <div className="carousel">
       <div className="centro">
+        <div className="passadores"></div>
         <Swiper
           navigation
           pagination={{ clickable: true }}

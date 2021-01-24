@@ -31,4 +31,11 @@
     .terceira-sessao .centro {
         flex-direction: column;
     }
+    .terceira-sessao .centro img {
+        margin-right: 0px;
+        border: 20px solid #343434;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        max-width: 100%;
+    }
 }

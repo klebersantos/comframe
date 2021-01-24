@@ -1,91 +1,114 @@
 import React from "react";
 import "./contact.css";
-import { useForm } from "react-hook-form";
+
+import { Formik, Form, Field } from "formik";
 
 import InputMask from "react-input-mask";
 
-function Contact() {
-  const { register, handleSubmit, errors } = useForm();
-
-  function onSubmit(data) {
-    console.log("Data submitted: ", data);
+function validateEmail(value) {
+  let error;
+  if (!value) {
+    error = "Campo obrigatório";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+    error = "E-mail inválido";
   }
+  return error;
+}
 
+function validateNome(value) {
+  let error;
+  if (value === "") {
+    error = "Campo obrigatório";
+  }
+  return error;
+}
+
+function validateTelefone(value) {
+  let error;
+  if (value === "") {
+    error = "Campo obrigatório";
+  }
+  return error;
+}
+
+function validateMensagem(value) {
+  let error;
+  if (value === "") {
+    error = "Campo obrigatório";
+  }
+  return error;
+}
+
+function Contact() {
   return (
     <div>
       <section className="formulario">
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <div className="box-input">
-            <label htmlFor="nome">*Nome:</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              className="inpt"
-              placeholder="Informe seu nome"
-              ref={register({
-                required: "Digite seu nome",
-              })}
-            />
-            {errors.nome && <span className="erro">{errors.nome.message}</span>}
-          </div>
-          <div className="d-flex">
-            <div className="box-input">
-              <label htmlFor="email">*E-mail:</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="inpt"
-                placeholder="Informe seu e-mail"
-                ref={register({
-                  required: "Digite seu email",
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                    message: "Digite um email válido",
-                  },
-                })}
-              />
-              {errors.email && (
-                <span className="erro">{errors.email.message}</span>
-              )}
-            </div>
-            <div className="box-input">
-              <label htmlFor="telefone">Telefone:</label>
-              <InputMask
-                type="text"
-                id="telefone"
-                nome="telefone"
-                mask="(99)99999-9999"
-                className="phone phone_with_ddd"
-                placeholder="(__)_____ ____"
-                ref={register({
-                  required: "Digite seu telefone",
-                })}
-              />
-              {errors.telefone && (
-                <span className="erro">{errors.telefone.message}</span>
-              )}
-            </div>
-          </div>
-          <div className="box-input">
-            <label htmlFor="mensagem">Mensagem:</label>
-            <textarea
-              type="text"
-              id="mensagem"
-              nome="mensagem"
-              className="text-area"
-              placeholder="Escreva aqui"
-              ref={register({
-                required: "Digite sua mensagem",
-              })}
-            ></textarea>
-            {errors.mensagem && (
-              <span className="erro">{errors.mensagem.message}</span>
-            )}
-          </div>
-          <input type="submit" value="ENVIAR" />
-        </form>
+        <Formik
+          initialValues={{
+            nome: "",
+            email: "",
+            telefone: "",
+            mensagem: "",
+          }}
+          onSubmit={(values) => {
+            // same shape as initial values
+            console.log(values);
+          }}
+        >
+          {({ errors, touched, isValidating }) => (
+            <Form>
+              <div className="box-input">
+                <label htmlFor="nome">*Nome:</label>
+                <Field
+                  name="nome"
+                  placeholder="Informe seu nome"
+                  validate={validateNome}
+                />
+                {errors.nome && touched.nome && (
+                  <span className="erro">{errors.nome}</span>
+                )}
+              </div>
+              <div className="d-flex">
+                <div className="box-input">
+                  <label htmlFor="email">*E-mail:</label>
+                  <Field
+                    name="email"
+                    placeholder="Informe seu e-mail"
+                    validate={validateEmail}
+                  />
+                  {errors.email && touched.email && (
+                    <span className="erro">{errors.email}</span>
+                  )}
+                </div>
+                <div className="box-input">
+                  <label htmlFor="telefone">*Telefone:</label>
+                  <Field
+                    name="telefone"
+                    mask="(99)99999-9999"
+                    placeholder="(__)_____ ____"
+                    validate={validateTelefone}
+                  />
+                  {errors.telefone && touched.telefone && (
+                    <span className="erro">{errors.telefone}</span>
+                  )}
+                </div>
+              </div>
+              <div className="box-input">
+                <label htmlFor="mensagem">*Mensagem:</label>
+                <Field
+                  name="mensagem"
+                  placeholder="Escreva aqui"
+                  validate={validateMensagem}
+                />
+                {errors.mensagem && touched.mensagem && (
+                  <span className="erro">{errors.mensagem}</span>
+                )}
+              </div>
+
+              <input type="submit" value="Enviar" />
+            </Form>
+          )}
+        </Formik>
       </section>
     </div>
   );

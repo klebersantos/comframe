@@ -32,6 +32,7 @@ header {
 .HeaderSection .swiper-slide img {
     height: 100vh;
     width: 100%;
+    object-fit: cover;
 }
 
 .HeaderSection .swiper-pagination-fraction,
@@ -79,4 +80,15 @@ header {
     border-style: solid;
     border-radius: 50%;
     background-color: rgb(84, 97, 48);
+}
+
+@media (max-width: 992px) {
+    .HeaderSection h1 {
+        font-size: 37px;
+    }
+
+    .HeaderSection p {
+        color: #2d3b09;
+        font-size: 19px;
+    }
 }
