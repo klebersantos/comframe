@@ -1,10 +1,11 @@
 import React from "react";
+import "./footer.css";
 
 function Footer() {
   return (
-    <div>
-      <h1>Footeraaaaaaa</h1>
-    </div>
+    <footer>
+      <h1>LOREM IPSUM</h1>
+    </footer>
   );
 }
 

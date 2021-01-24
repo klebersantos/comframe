@@ -1,32 +1,24 @@
 import React from "react";
-import { Fade } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Pagination } from "swiper";
+import "swiper/swiper-bundle.css";
 import img1 from "../../images/banner.png";
 import img2 from "../../images/banner2.jpg";
 
-const properties = {
-  autoplay: true,
-  arrows: false,
-  canSwipe: true,
-  indicators: true,
-};
+SwiperCore.use([Pagination]);
 
 const Slideshow = () => {
   return (
     <div>
       <div className="slide-container">
-        <Fade {...properties}>
-          <div className="each-fade">
-            <div>
-              <img src={img1} />
-            </div>
-          </div>
-          <div className="each-fade">
-            <div>
-              <img src={img2} />
-            </div>
-          </div>
-        </Fade>
+        <Swiper pagination={{ clickable: true }}>
+          <SwiperSlide>
+            <img src={img1} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={img2} />
+          </SwiperSlide>
+        </Swiper>
       </div>
     </div>
   );

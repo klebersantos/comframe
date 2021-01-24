@@ -12,13 +12,13 @@ header {
     right: 0px;
 }
 
-h1 {
+.HeaderSection h1 {
     color: #546130;
     font-size: 60px;
     font-weight: bold;
     margin-bottom: 10px;
 }
-p {
+.HeaderSection p {
     color: #2d3b09;
     font-size: 24px;
     font-weight: bold;
@@ -29,12 +29,18 @@ p {
     margin: 0 auto;
 }
 
-.each-fade img {
+.HeaderSection .swiper-slide img {
     height: 100vh;
     width: 100%;
 }
 
-.indicators {
+.HeaderSection .swiper-pagination-fraction,
+.HeaderSection .swiper-pagination-custom,
+.HeaderSection .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: 0;
+}
+
+.HeaderSection .swiper-pagination {
     width: 100%;
     height: 90px;
     background-color: rgba(52, 52, 52, 0.733);
@@ -47,19 +53,19 @@ p {
     z-index: 5;
 }
 
-.HeaderSection .react-slideshow-container + ul.indicators .each-slideshow-indicator {
+.HeaderSection .swiper-pagination-bullet {
     border-width: 8px;
     border-color: rgb(52, 52, 52);
     border-style: solid;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
-    width: 42px;
-    height: 42px;
+    width: 43px;
+    height: 43px;
     margin: 0 5px;
     transition: 0.3s;
 }
 
-.HeaderSection .react-slideshow-container + ul.indicators .each-slideshow-indicator.active {
+.HeaderSection .swiper-pagination-bullet-active {
     border-width: 8px;
     border-color: rgb(255, 255, 255);
     border-style: solid;
@@ -67,20 +73,10 @@ p {
     background-color: rgb(84, 97, 48);
 }
 
-.HeaderSection .react-slideshow-container + ul.indicators .each-slideshow-indicator.active:hover {
+.HeaderSection .swiper-pagination-bullet.active:hover {
     border-width: 8px;
     border-color: rgb(255, 255, 255);
     border-style: solid;
     border-radius: 50%;
     background-color: rgb(84, 97, 48);
-}
-
-.HeaderSection .react-slideshow-container + ul.indicators li {
-    width: auto;
-    height: auto;
-    padding: 0;
-}
-
-.HeaderSection .react-slideshow-container + ul.indicators .each-slideshow-indicator:before {
-    display: none;
 }

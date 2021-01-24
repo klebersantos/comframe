@@ -1,0 +1,87 @@
+.quarta-sessao {
+    padding: 50px 0;
+    background: #bebebe;
+}
+.quarta-sessao .faq-lista {
+    border-radius: 15px;
+    overflow: hidden;
+}
+.quarta-sessao .centro {
+    max-width: 1122px;
+    margin: 0 auto;
+}
+.quarta-sessao .centro dt {
+    background: #6f6f6f;
+    padding: 15px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+.quarta-sessao .centro dd {
+    color: #000;
+    background: #fff;
+    padding: 20px;
+}
+
+.js-accordion .item-accordion dd {
+    display: none;
+    animation: slider 0.4s forwards;
+}
+.js-accordion .item-accordion dt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1px;
+    cursor: pointer;
+}
+.js-accordion .item-accordion dt::after {
+    content: "";
+    width: 18px;
+    height: 25px;
+    color: #fff;
+    background: url("../../images/baixo.png") center top no-repeat;
+}
+.js-accordion .item-accordion.open dd {
+    display: flex;
+    animation: slider 0.4s forwards;
+    align-items: center;
+}
+.js-accordion .item-accordion.open dd img {
+    margin-right: 30px;
+    max-width: 300px;
+    border: 10px solid #6f6f6f;
+}
+.js-accordion .item-accordion.open dd p {
+    color: #6f6f6f;
+}
+.js-accordion .item-accordion.open dt {
+    background: #fff;
+    color: #6f6f6f;
+    margin-bottom: 0;
+}
+.js-accordion .item-accordion.open dt::after {
+    content: "";
+    width: 18px;
+    height: 25px;
+    color: #fff;
+    background: url("../../images/cima.png") center top no-repeat;
+}
+
+@keyframes slider {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 992px) {
+    .js-accordion .item-accordion.open dd {
+        display: block;
+    }
+    .js-accordion .item-accordion.open dd img {
+        margin-right: 0;
+        max-width: 100%;
+    }
+}
